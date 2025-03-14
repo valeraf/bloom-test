@@ -1,0 +1,82 @@
+.autocomplete-container {
+    cursor: pointer;
+    padding: 5px 10px;
+    height: 28px;
+    line-height: 28px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background-color: var(--light-color);
+    color: #adadad;
+    min-width: 150px;
+    text-align: left;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.has-value {
+        color: var(--black-color);
+    }
+
+    mat-icon {
+        vertical-align: top;
+    }
+
+    &:active {
+        background-color: #e4e4e4;
+    }
+}
+
+.list-container {
+    padding: 5px 0 0 0;
+}
+
+.search-ctrl {
+    display: block;
+    width: 100%;
+    height: 32px;
+    font-size: 14px;
+    padding: 4px 10px;
+    box-sizing: border-box;
+    border: none;
+    
+    &:focus {
+        outline: none;
+    }
+}
+
+.options-list {
+    box-shadow: 0px 2px 3px #ccc;
+    min-width: 200px;
+    background-color: #fff;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.option {
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 12px;
+    &:hover {
+        background-color: yellow;
+    }
+}
+
+.default-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1 1 auto;
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+
+    span {
+        font-size: 10px;
+        background: #ccc;
+        color: var(--black-color);
+        padding: 0 4px;
+        &:empty {
+            display: none;
+        }
+    }
+}

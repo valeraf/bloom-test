@@ -1,0 +1,27 @@
+@for (control of attributes.controls; track control.controls.key.value;) {
+    <div class="container">
+        @let propertyCtrl = control.controls.property;
+        <app-autocomplete
+            [formControl]="propertyCtrl"
+            (optionSelected)="onAttributeSelected($event, control)"
+            placeholder="Select an attribute"
+            [open]="autoOpen()"
+            [options]="propertieNames()">
+            <ng-container parent-value>
+                {{ currentEvent() }}
+            </ng-container>
+        </app-autocomplete>
+        @let typeCtrl = control.controls.type;
+        @let comparatorCtrl = control.controls.comparator;
+        @if (propertyCtrl.value && typeCtrl.value) {
+            <app-comparator [formControl]="comparatorCtrl" [type]="typeCtrl.value" />
+        }
+        <button class="btn-icon" (click)="onRemove($index)"><mat-icon inline aria-hidden="false" aria-label="Clear" fontIcon="clear"></mat-icon></button>
+    </div>
+}
+
+@if (attributes.value.length === 0) {
+    <button class="link-btn" (click)="onAddAttribute()">+ Add an event attribute</button>
+} @else {
+    <button class="link-btn" (click)="onAddAttribute()">Refine more</button>
+}

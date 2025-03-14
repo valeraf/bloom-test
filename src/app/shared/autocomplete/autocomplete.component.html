@@ -1,0 +1,31 @@
+<button class="autocomplete-container" [ngClass]="{'has-value': ctrl.value}" (click)="toggle()" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+    {{ selectedValue$ | async }}
+    <mat-icon inline fontIcon="expand_more"></mat-icon>
+</button>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+  (overlayOutsideClick)="toggle()"
+  (detach)="isOpen = false"
+>
+    <div class="list-container">
+        <div class="options-list">
+            <ng-container [ngTemplateOutlet]="headerTemplateRef || defaultHeader"></ng-container>
+
+            @for (option of filteredOptions$ | async; track $index) {
+                <div class="option" (click)="onSelect(option)">{{ option.label }}</div>
+            }
+          </div>
+    </div>
+</ng-template>
+
+<ng-template #defaultHeader>
+    <div class="default-header">
+        <span>
+            <ng-content select="[parent-value]"></ng-content>
+        </span>
+        <input #searchInput type="text" class="search-ctrl" [formControl]="searchCtrl" [placeholder]="searchPlaceholer()">
+    </div>
+</ng-template>

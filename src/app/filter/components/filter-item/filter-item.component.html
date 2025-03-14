@@ -1,0 +1,17 @@
+<ng-container [formGroup]="form">
+    <div class="event">
+        @let events = events$ | async;
+        @if(events) {
+            <app-autocomplete formControlName="event" placeholder="Select an event" [options]="events" />
+        }
+    </div>
+
+    @let properties = propertiesByEvent$ | async;
+    @if (form.controls.event.value) {
+        <div class="event-attributes">
+            @if (properties) {
+                <app-attribute-control [formControl]="form.controls.attributes" [currentEvent]="form.controls.event.value" [properties]="properties" />
+            }
+        </div>
+    }
+</ng-container>

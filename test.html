@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            table-layout: fixed;
+            min-width: 1000px;
+        }
+
+        td {
+            width: 200px;
+            padding: 0;
+        }
+
+        .sticky-container {
+            max-width: 50%;
+            overflow: auto;
+        }
+        .first {
+            position: sticky;
+            left: 0;
+            background-color: green;
+        }
+        .inner-container {
+            left: 0;
+            width: 50%;
+        }
+        .inner-table {
+            table-layout: fixed;
+            width: 100%;
+            min-width: auto;
+        }
+        .inner-table td {
+            width: auto !important;
+        }
+        .empty {
+            width: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sticky-container">
+        <table>
+            <tr>
+                <td colspan="13" class="first">
+                    <div>
+                        <div>
+                            <table class="inner-table">
+                                <tr>
+                                    <td>Inner Name</td>
+                                    <td>Inner Date</td>
+                                    <td>Inner State</td>
+                                    <td>Inner Action</td>
+                                    <td>LAST</td>
+                                </tr>
+                                <tr>
+                                    <td>test</td>
+                                    <td>tes12</td>
+                                    <td>sda asd as</td>
+                                    <td>asd asd</td>
+                                    <td>a sda s</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+                <td class="empty"></td>
+            </tr>
+            <tr>
+                <td class="first">name</td>
+                <td>id</td>
+                <td>date</td>
+                <td>state</td>
+                <td>action</td>
+                <td>name</td>
+                <td>id</td>
+                <td>date</td>
+                <td>state</td>
+                <td>action</td>
+                <td>name</td>
+                <td>id</td>
+                <td>date</td>
+                <td>state</td>
+                <td>action</td>
+                <td class="empty"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

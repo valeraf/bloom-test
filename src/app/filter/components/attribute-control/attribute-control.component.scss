@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    align-items: start;
+    position: relative;
+    margin-bottom: 10px;
+    
+    & > * {
+        margin-right: 10px;
+    }
+
+    button {
+        visibility: hidden;
+        opacity: 0;
+    }
+    &:hover {
+        button {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}

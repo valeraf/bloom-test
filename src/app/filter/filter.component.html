@@ -1,0 +1,33 @@
+<div class="filter">
+    <div class="title">Customer filter</div>
+    <button class="link-btn danger discard" (click)="onDiscard()">Discard filters</button>
+
+    <div class="content">
+        @let filtersCtrl = form.controls.filters.controls;
+        @for (control of filtersCtrl; track control.value?.key) {
+            <div class="item-container">
+                <div class="header">
+                    <div class="filter-step">{{ $index + 1 }}. Step: <span>{{ control.value?.event || 'Unnamed step' }}</span></div>
+                    <div class="filter-actions">
+                        <button class="btn-icon" (click)="onCopyFilter(control, $index)">
+                            <mat-icon inline aria-hidden="false" aria-label="Copy" fontIcon="content_copy"></mat-icon>
+                        </button>
+                        @if (filtersCtrl.length > 1) {
+                            <button class="btn-icon" (click)="onRemoveFilter($index)">
+                                <mat-icon inline aria-hidden="false" aria-label="Delete" fontIcon="delete"></mat-icon>
+                            </button>
+                        }
+                    </div>
+                </div>
+                <app-filter-item [formControl]="control" />
+            </div>
+        }
+        <div class="content-actions">
+            <button class="link-btn" (click)="onAddStep()">+ Add Funnel Step</button>
+        </div>
+    </div>
+
+    <div class="action">
+        <button class="btn primary" (click)="onApply()">Apply filters</button>
+    </div>
+</div>

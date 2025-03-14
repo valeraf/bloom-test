@@ -1,0 +1,8 @@
+input {
+    margin-right: 10px;
+    min-width: 55px;
+    width: calc(50% - 5px);
+    &:last-child {
+        margin-right: 0;
+    }
+}

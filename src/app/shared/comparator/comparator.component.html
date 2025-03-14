@@ -1,0 +1,34 @@
+<ng-container [formGroup]="form">
+    <app-autocomplete formControlName="comparator" placeholder="Select an attribute" [options]="optionsByType()">
+        <ng-template #customHeaderTemplate>
+            <div class="custom-header">
+                @for (item of availableTypes; track $index) {
+                    <button
+                        [ngClass]="{'active': _type() === item.value}"
+                        (click)="onOptionsByType(item.value)">
+                        <mat-icon [fontIcon]="item.icon"></mat-icon>
+                        {{ item.label }}
+                    </button>
+                }
+            </div>
+        </ng-template>
+    </app-autocomplete>
+
+    @let comparator = form.controls.comparator.value;
+    @if (comparator === 'between') {
+        <app-range formControlName="value" />
+    }
+    @else if (comparator === 'contains') {
+        <app-contains-selector formControlName="value" />
+    }
+    @else {
+        @switch (inputType()) {
+            @case ('number') {
+                <input formControlName="value" type="number">
+            }
+            @default {
+                <input formControlName="value" type="text">
+            }
+        }
+    }
+</ng-container>
