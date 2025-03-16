@@ -19,6 +19,10 @@ export class EventsService {
   )
   constructor(private http: HttpClient) { }
 
+  /**
+   * This could be stored in a Store (like NGRX)
+   * but for this small task - I didn't see the point, however bigger application will require some State management
+   */
   loadEvents() {
     this.http.get<Events>('https://br-fe-assignment.github.io/customer-events/events.json').subscribe(events => {
       this.events$.next(events.events);

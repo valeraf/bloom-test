@@ -23,6 +23,38 @@ import { AsyncPipe, NgClass, NgTemplateOutlet } from '@angular/common';
 import { map, startWith, switchMap } from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop';
 
+/**
+ * HOW TO:
+ *
+ * We can use Autocomplete Component in any other components as a normal Angular Component with selector: `<app-autocomplete>`
+ * @Input placeholder - used to define a placeholder for an Empty value state
+ * @Input open - used to open Autocomplete options programatically
+ * @Input searchPlaceholer - used to define a placeholder for the options dropdown
+ * @Input options - takes data to be rendered in the table
+ * 
+ * @Output optionSelected - emits an even with selected option
+ *
+ *
+ * Custom header temapltes:
+ * There is a default template used to render dropdown header
+ *
+ * If we want to customize the Dropdown header, we can do so by defining a custom template in the parent component:
+ * <app-autocomplete formControlName="comparator" placeholder="Select an attribute" [options]="optionsByType()">
+ *      <ng-template #customHeaderTemplate>
+ *          <div class="custom-header">
+ *              @for (item of availableTypes; track $index) {
+ *                  <button
+ *                      [ngClass]="{'active': _type() === item.value}"
+ *                      (click)="onOptionsByType(item.value)">
+ *                      <mat-icon [fontIcon]="item.icon"></mat-icon>
+ *                      {{ item.label }}
+ *                  </button>
+ *              }
+ *          </div>
+ *      </ng-template>
+ *  </app-autocomplete>
+ */
+
 @Component({
   selector: 'app-autocomplete',
   standalone: true,
